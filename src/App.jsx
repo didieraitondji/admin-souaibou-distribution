@@ -5,12 +5,13 @@
  */
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { AdminAuthProvider, useAdminAuth } from "./context/AdminAuthContext.jsx";
+import { DataProvider } from "./context/DataContext.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import AdminLayout from "./components/layout/AdminLayout.jsx";
 
 // Pages à venir (étapes suivantes)
-// import DashboardPage   from "./pages/dashboard/DashboardPage.jsx";
-// import CommandesPage   from "./pages/commandes/CommandesPage.jsx";
+import DashboardPage from "./pages/dashboard/DashboardPage.jsx";
+import CommandesPage from "./pages/commandes/CommandesPage.jsx";
 // import CataloguePage   from "./pages/catalogue/CataloguePage.jsx";
 // import ClientsPage     from "./pages/clients/ClientsPage.jsx";
 // import LivraisonsPage  from "./pages/livraisons/LivraisonsPage.jsx";
@@ -55,14 +56,14 @@ function AppRoutes() {
       {/* Dashboard */}
       <Route path="/dashboard" element={
         <ProtectedRoute activePage="dashboard">
-          <ComingSoon page="Dashboard" />
+          <DashboardPage />
         </ProtectedRoute>
       } />
 
       {/* Commandes */}
       <Route path="/commandes" element={
         <ProtectedRoute activePage="commandes">
-          <ComingSoon page="Commandes" />
+          <CommandesPage />
         </ProtectedRoute>
       } />
 
@@ -110,9 +111,11 @@ function AppRoutes() {
 export default function App() {
   return (
     <AdminAuthProvider>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <DataProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </DataProvider>
     </AdminAuthProvider>
   );
 }

@@ -78,7 +78,6 @@ export default function Sidebar({ activePage, collapsed, onToggle }) {
                                             className="flex items-center gap-3 px-3 py-2.5 rounded-xl no-underline transition-all duration-150 group"
                                             style={{
                                                 background: isActive ? "var(--color-primary-5)" : "transparent",
-                                                borderLeft: isActive ? "2px solid var(--color-primary-1)" : "2px solid transparent",
                                             }}
                                             title={collapsed ? item.label : undefined}>
                                             <span className="text-lg shrink-0 transition-transform duration-150 group-hover:scale-110">
